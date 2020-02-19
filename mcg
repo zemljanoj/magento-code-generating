@@ -1,0 +1,11 @@
+#!/usr/bin/env php
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+
+define('HOME_DIR', __DIR__ . '/src');
+
+$application = new \Symfony\Component\Console\Application();
+$application->add(new \Mcg\Command\Main());
+
+$application->run();

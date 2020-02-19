@@ -8,5 +8,13 @@
             "email": "zemljanoj.i@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "symfony/console": "^3.4",
+        "gossi/php-code-generator": "^0.5.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Mcg\\": "src/"
+        }
+    }
 }
