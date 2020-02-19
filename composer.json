@@ -1,0 +1,12 @@
+{
+    "name": "zemljanoj/magento-code-generating",
+    "description": "magento-code-generating",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Andrii Iniahin",
+            "email": "zemljanoj.i@gmail.com"
+        }
+    ],
+    "require": {}
+}
