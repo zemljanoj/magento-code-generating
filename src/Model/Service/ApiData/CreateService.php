@@ -7,27 +7,23 @@
 namespace Mcg\Model\Service\ApiData;
 
 use gossi\codegen\generator\CodeGenerator;
-use gossi\codegen\model\PhpClass;
-use gossi\codegen\model\PhpMethod;
-use gossi\codegen\model\PhpParameter;
-use Mcg\Model\Data\ApiData\CreateInputData;
+use gossi\codegen\model\PhpInterface;
 
 class CreateService
 {
-    public function execute(CreateInputData $createInputData)
+    public function execute(string $name)
     {
-        $class = new PhpClass();
-        $class
-            ->setQualifiedName('my\\cool\\Tool')
-            ->setMethod(PhpMethod::create('__construct')
-                ->addParameter(PhpParameter::create('target')
-                    ->setType('string')
-                    ->setDescription('Creates my Tool')
-                )
-            )
-        ;
-
+        $interfaceName = $name . 'Interface';
+        $getNamespaceService = new GetNamespaceService();
+        $nameSpace = $getNamespaceService->execute();
+        $qualifiedName = $nameSpace . '\\' . $interfaceName;
+        $interface = new PhpInterface($qualifiedName);
         $generator = new CodeGenerator();
-        $code = $generator->generate($class);
+        $generator->getConfig()->setGenerateEmptyDocblock(false);
+        $code = $generator->generate($interface);
+
+        var_dump(
+            $code
+        );
     }
 }

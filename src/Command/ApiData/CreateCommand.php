@@ -6,7 +6,6 @@
 
 namespace Mcg\Command\ApiData;
 
-use Mcg\Model\Data\ApiData\CreateInputData;
 use Mcg\Model\Service\ApiData\CreateService;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -32,9 +31,7 @@ class CreateCommand extends Command
         OutputInterface $output
     ) {
         $output->writeln("<info>Create an api data interface.</info>");
-        $createInputData = new CreateInputData();
-        $createInputData->setName($name);
         $createService = new CreateService();
-        $createService->execute($createInputData);
+        $createService->execute('Test');
     }
 }
