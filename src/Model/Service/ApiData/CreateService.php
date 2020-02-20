@@ -6,8 +6,10 @@
 
 namespace Mcg\Model\Service\ApiData;
 
+use gossi\codegen\generator\CodeFileGenerator;
 use gossi\codegen\generator\CodeGenerator;
 use gossi\codegen\model\PhpInterface;
+use Mcg\Model\Service\FileSystem\CreateFileService;
 
 class CreateService
 {
@@ -17,13 +19,16 @@ class CreateService
         $getNamespaceService = new GetNamespaceService();
         $nameSpace = $getNamespaceService->execute();
         $qualifiedName = $nameSpace . '\\' . $interfaceName;
+
         $interface = new PhpInterface($qualifiedName);
-        $generator = new CodeGenerator();
+        $generator = new CodeFileGenerator();
         $generator->getConfig()->setGenerateEmptyDocblock(false);
         $code = $generator->generate($interface);
 
-        var_dump(
-            $code
-        );
+        $getPathService = new GetPathService();
+        $path = $getPathService->execute();
+        $filePath = $path . '/' . $interfaceName . '.php';
+        $createFileService = new CreateFileService();
+        $createFileService->execute($filePath, $code);
     }
 }

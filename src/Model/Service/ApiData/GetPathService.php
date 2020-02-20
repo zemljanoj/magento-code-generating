@@ -6,16 +6,22 @@
 
 namespace Mcg\Model\Service\ApiData;
 
+use Exception;
+use Mcg\Model\Service\Module\GetPathService as GetModulePathService;
+
 class GetPathService
 {
     const DIR = 'Api/Data';
 
     /**
-     * @param string $moduleDir
      * @return string
+     * @throws Exception
      */
-    public function execute(string $moduleDir): string
+    public function execute(): string
     {
-        return trim($moduleDir, '/') . '/' . self::DIR;
+        $getModulePathService = new GetModulePathService();
+        $modulePath = $getModulePathService->execute();
+
+        return $modulePath . '/' . self::DIR;
     }
 }
