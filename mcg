@@ -8,5 +8,6 @@ define('HOME_DIR', __DIR__ . '/src');
 $application = new \Symfony\Component\Console\Application();
 $application->add(new \Mcg\Command\Main());
 $application->add(new \Mcg\Command\ApiData\CreateCommand());
+$application->add(new \Mcg\Command\ApiData\AddFieldCommand());
 
 $application->run();

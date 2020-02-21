@@ -9,10 +9,13 @@ namespace Mcg\Command\ApiData;
 use Mcg\Model\Service\ApiData\CreateService;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 class CreateCommand extends Command
 {
+    const OPTION_NAME = 'name';
+
     /**
      * {@inheritdoc}
      */
@@ -20,7 +23,12 @@ class CreateCommand extends Command
     {
         $this->setName('api-data:create')
             ->setDescription('Create an api data interface.')
-            ->setHelp('Create an api data interface.');
+            ->addOption(
+                self::OPTION_NAME,
+                'name',
+                InputOption::VALUE_REQUIRED,
+                'Interface name.'
+            );
     }
 
     /**
@@ -30,8 +38,9 @@ class CreateCommand extends Command
         InputInterface $input,
         OutputInterface $output
     ) {
-        $output->writeln("<info>Create an api data interface.</info>");
+        $name = $input->getOption(self::OPTION_NAME);
         $createService = new CreateService();
-        $createService->execute('Test');
+        $createService->execute($name);
+        $output->writeln("<info>Created " . $name . " api data interface.</info>");
     }
 }
