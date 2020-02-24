@@ -9,9 +9,9 @@ namespace Mcg\Model\Service\ResourceModel;
 use gossi\codegen\model\PhpClass;
 use gossi\codegen\model\PhpMethod;
 use gossi\docblock\Docblock;
-use gossi\docblock\tags\UnknownTag;
 use Mcg\Model\Service\FileSystem\CreateFileService;
 use Mcg\Model\Service\GetCodeFileGeneratorService;
+use Mcg\lib\gossi\dockblock\tags\InheritDocTag;
 
 class CreateService
 {
@@ -28,7 +28,7 @@ class CreateService
         $method = new PhpMethod('_construct');
         $method->setVisibility(PhpMethod::VISIBILITY_PROTECTED);
         $dockBlock = new Docblock();
-        $inheritDocTag = new UnknownTag('inheritDoc');
+        $inheritDocTag = new InheritDocTag();
         $dockBlock->appendTag($inheritDocTag);
         $method->setDocblock($dockBlock);
         $method->setBody('$this->_init(\'' . $table . '\', \'' . $idField . '\');');
