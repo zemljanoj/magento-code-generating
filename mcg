@@ -9,5 +9,6 @@ $application = new \Symfony\Component\Console\Application();
 $application->add(new \Mcg\Command\Main());
 $application->add(new \Mcg\Command\ApiData\CreateCommand());
 $application->add(new \Mcg\Command\ApiData\AddFieldCommand());
+$application->add(new \Mcg\Command\ResourceModel\CreateCommand());
 
 $application->run();
