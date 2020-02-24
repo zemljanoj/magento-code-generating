@@ -4,9 +4,9 @@
  * @author    Etendo AB <info@etendo.se>
  */
 
-namespace Mcg\Command\ResourceModel;
+namespace Mcg\Command\Model;
 
-use Mcg\Model\Service\ResourceModel\CreateService;
+use Mcg\Model\Service\Model\CreateService;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -16,32 +16,18 @@ class CreateCommand extends Command
 {
     const OPTION_NAME = 'name';
 
-    const OPTION_TABLE_NAME = 'table';
-
-    const OPTION_ID_FIELD_NAME = 'id';
-
     /**
      * {@inheritdoc}
      */
     protected function configure()
     {
-        $this->setName('resource-model:create')
-            ->setDescription('Create a resource model.')
+        $this->setName('model:create')
+            ->setDescription('Create a model.')
             ->addOption(
                 self::OPTION_NAME,
                 'name',
                 InputOption::VALUE_REQUIRED,
                 'Resource model name.'
-            )->addOption(
-                self::OPTION_TABLE_NAME,
-                'table',
-                InputOption::VALUE_REQUIRED,
-                'Table name.'
-            )->addOption(
-                self::OPTION_ID_FIELD_NAME,
-                'id',
-                InputOption::VALUE_REQUIRED,
-                'Identifier field name.'
             );
     }
 
@@ -53,10 +39,8 @@ class CreateCommand extends Command
         OutputInterface $output
     ) {
         $name = $input->getOption(self::OPTION_NAME);
-        $table = $input->getOption(self::OPTION_TABLE_NAME);
-        $idField = $input->getOption(self::OPTION_ID_FIELD_NAME);
         $createService = new CreateService();
-        $createService->execute($name, $table, $idField);
-        $output->writeln("<info>Created " . $name . " resource model.</info>");
+        $createService->execute($name);
+        $output->writeln("<info>Created " . $name . " model.</info>");
     }
 }

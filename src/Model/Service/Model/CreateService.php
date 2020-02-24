@@ -4,7 +4,7 @@
  * @author Etendo AB <info@etendo.se>
  */
 
-namespace Mcg\Model\Service\ResourceModel;
+namespace Mcg\Model\Service\Model;
 
 use gossi\codegen\model\PhpClass;
 use gossi\codegen\model\PhpMethod;
@@ -17,12 +17,10 @@ class CreateService
 {
     /**
      * @param string $name
-     * @param string $table
-     * @param string $idField
      * @return void
      * @throws \Exception
      */
-    public function execute(string $name, string $table, string $idField)
+    public function execute(string $name)
     {
         $getNamespaceService = new GetNamespaceService();
         $nameSpace = $getNamespaceService->execute();
@@ -38,10 +36,10 @@ class CreateService
         $inheritDocTag = new InheritDocTag();
         $dockBlock->appendTag($inheritDocTag);
         $method->setDocblock($dockBlock);
-        $method->setBody('$this->_init(\'' . $table . '\', \'' . $idField . '\');');
+        $method->setBody('$this->_init(ResourceModel\\' . $name . '::class);');
         $class->setMethod($method);
-        $class->setParentClassName('AbstractDb');
-        $class->declareUse('Magento\\Framework\\Model\\ResourceModel\\Db\\AbstractDb');
+        $class->setParentClassName('AbstractModel');
+        $class->declareUse('Magento\\Framework\\Model\\AbstractModel');
         $code = $generator->generate($class);
 
         $getPathService = new GetPathService();
