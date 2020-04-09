@@ -66,7 +66,6 @@ class AddFieldService
     {
         $seMethodName = $this->getMethodName('get', $name);
         $setMethod = new PhpMethod($seMethodName);
-        $setMethod->setType($type);
         $interface->setMethod($setMethod);
     }
 

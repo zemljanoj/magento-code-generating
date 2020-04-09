@@ -18,7 +18,10 @@ class GetCodeFileGeneratorService
      */
     public function execute()
     {
-        $generator = new CodeFileGenerator();
+        $generator = new CodeFileGenerator([
+            'generateScalarTypeHints' => true,
+            'generateReturnTypeHints' => true,
+        ]);
         $header = new Docblock();
         $copyrightTag = new UnknownTag('copyright', 'Copyright (c) 2016-2020 Etendo <etendo.se>. All rights reserved.');
         $header->appendTag($copyrightTag);
@@ -28,6 +31,7 @@ class GetCodeFileGeneratorService
         $header->appendTag($authorTag);
         $generator->getConfig()->setHeaderDocblock($header);
         $generator->getConfig()->setGenerateEmptyDocblock(false);
+
 
         return $generator;
     }
