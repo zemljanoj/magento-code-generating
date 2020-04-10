@@ -74,7 +74,7 @@ class CreateService
             }
             if ($methodCase == 'set') {
                 $parameterName = $method->getParameter(0)->getName();
-                $method->setBody('$this->getData(self::' . $constName . ', $' . $parameterName . ');');
+                $method->setBody('$this->setData(self::' . $constName . ', $' . $parameterName . ');');
             }
 
             $class->setMethod($method);
