@@ -6,7 +6,7 @@
 
 namespace Mcg\Model\Service\Method;
 
-use gossi\codegen\model\PhpMethod;
+use Mcg\lib\gossi\codegen\model\PhpMethod;
 
 class GetConstNameService
 {

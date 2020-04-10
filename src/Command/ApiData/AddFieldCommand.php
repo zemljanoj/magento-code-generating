@@ -17,6 +17,8 @@ class AddFieldCommand extends Command
 {
     const OPTION_NAME = 'name';
 
+    const OPTION_DESCRIPTION = 'description';
+
     const OPTION_TYPE = 'type';
 
     const OPTION_INTERFACE_FILE_PATH = 'file';
@@ -33,6 +35,11 @@ class AddFieldCommand extends Command
                 'name',
                 InputOption::VALUE_REQUIRED,
                 'Field name.'
+            )->addOption(
+                self::OPTION_DESCRIPTION,
+                'description',
+                InputOption::VALUE_OPTIONAL,
+                'Description.'
             )->addOption(
                 self::OPTION_TYPE,
                 'type',
@@ -56,8 +63,9 @@ class AddFieldCommand extends Command
         $name = $input->getOption(self::OPTION_NAME);
         $type = $input->getOption(self::OPTION_TYPE);
         $file = $input->getOption(self::OPTION_INTERFACE_FILE_PATH);
+        $description = (string)$input->getOption(self::OPTION_DESCRIPTION);
         $addFieldService = new AddFieldService();
-        $addFieldService->execute($name, $type, $file);
+        $addFieldService->execute($name, $type, $file, $description);
         $output->writeln("<info>Added " . $name . " field to " . $file . " interface.</info>");
     }
 }

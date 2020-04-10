@@ -6,8 +6,8 @@
 
 namespace Mcg\Model\Service\Model;
 
-use gossi\codegen\model\PhpClass;
-use gossi\codegen\model\PhpMethod;
+use Mcg\lib\gossi\codegen\model\PhpClass;
+use Mcg\lib\gossi\codegen\model\PhpMethod;
 use gossi\docblock\Docblock;
 use Mcg\Model\Service\FileSystem\CreateFileService;
 use Mcg\Model\Service\GetCodeFileGeneratorService;

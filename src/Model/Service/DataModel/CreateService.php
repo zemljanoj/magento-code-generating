@@ -6,9 +6,9 @@
 
 namespace Mcg\Model\Service\DataModel;
 
-use gossi\codegen\model\PhpClass;
-use gossi\codegen\model\PhpInterface;
-use gossi\codegen\model\PhpMethod;
+use Mcg\lib\gossi\codegen\model\PhpClass;
+use Mcg\lib\gossi\codegen\model\PhpInterface;
+use Mcg\lib\gossi\codegen\model\PhpMethod;
 use gossi\docblock\Docblock;
 use Mcg\Model\Service\ApiData\GetNamespaceService as GetInterfaceNamespaceService;
 use Mcg\Model\Service\ApiData\GetPathService as GetInterfacePathService;

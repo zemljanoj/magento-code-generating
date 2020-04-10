@@ -6,7 +6,7 @@
 
 namespace Mcg\Model\Service;
 
-use gossi\codegen\generator\CodeFileGenerator;
+use Mcg\lib\gossi\codegen\generator\CodeFileGenerator;
 use gossi\docblock\Docblock;
 use gossi\docblock\tags\AuthorTag;
 use gossi\docblock\tags\UnknownTag;
@@ -21,6 +21,7 @@ class GetCodeFileGeneratorService
         $generator = new CodeFileGenerator([
             'generateScalarTypeHints' => true,
             'generateReturnTypeHints' => true,
+            'declareStrictTypes' => true
         ]);
         $header = new Docblock();
         $copyrightTag = new UnknownTag('copyright', 'Copyright (c) 2016-2020 Etendo <etendo.se>. All rights reserved.');

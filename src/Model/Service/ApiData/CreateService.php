@@ -6,7 +6,7 @@
 
 namespace Mcg\Model\Service\ApiData;
 
-use gossi\codegen\model\PhpInterface;
+use Mcg\lib\gossi\codegen\model\PhpInterface;
 use Mcg\Model\Service\FileSystem\CreateFileService;
 use Mcg\Model\Service\GetCodeFileGeneratorService;
 
